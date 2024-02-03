@@ -84,33 +84,26 @@
       <div class="col-8 ">
         <img src="assets/mudassir-ali-Ygy6aPp6980-unsplash.jpg" class="img-fluid image" alt="...">
 
-<div class="row">
-  <center classname="title"><h1>Timestamp from Units:</h1></center>
-  <div class="col">
-    <div id="timestamp-display-1" class="timestamp"></div>
-  </div>
-  <div class="col">
-    <div id="timestamp-display-2" class="timestamp"></div>
-  </div>
-  <div class="col">
-    <div id="timestamp-display-3" class="timestamp"></div>
-  </div>
-  <div class="col">
-    <div id="timestamp-display-4" class="timestamp"></div>
-  </div>
-  <div class="col">
-    <div id="timestamp-display-5" class="timestamp"></div>
-  </div>
-  <div class="col">
-    <div id="timestamp-display-6" class="timestamp"></div>
-  </div>
-  <div class="col">
-    <div id="timestamp-display-7" class="timestamp"></div>
-  </div>
-</div>
+
        
         
-     
+<div class="row">
+  <div class="col">
+    <div class="row"><div id="time-difference-1-7" class="timestamp"></div></div>
+    <div class="row"></div>
+    <div class="row"> <div id="timestamp-display-2" class="timestamp"></div></div>
+  </div>
+  <div class="col">
+    <div class="row"><div id="timestamp-display-3" class="timestamp"></div></div>
+    <div class="row"><div id="timestamp-display-7" class="timestamp"></div></div>
+    <div class="row"><div id="timestamp-display-4" class="timestamp"></div></div>
+  </div>
+  <div class="col">
+    <div class="row"><div id="timestamp-display-5" class="timestamp"></div></div>
+    <div class="row"></div>
+    <div class="row"><div id="timestamp-display-6" class="timestamp"></div></div>
+  </div>
+</div>   
        
         
         
@@ -161,12 +154,17 @@
       const timestampRef6 = ref(database, "ir_test/unit6/timestamp");
       const timestampRef7 = ref(database, "ir_test/unit7/timestamp");
       
+
+
+
+
       
 
       // Listen for changes in the timestamp value
       onValue(timestampRef1, (snapshot) => {
         const timestamp = snapshot.val();
         document.getElementById("timestamp-display-1").innerHTML = "Timestamp Unit-1: " + timestamp;
+       
       });
 
       onValue(timestampRef2, (snapshot) => {
@@ -198,6 +196,31 @@
         const timestamp = snapshot.val();
         document.getElementById("timestamp-display-7").innerHTML = "Timestamp Unit-7: " + timestamp;
       });
+
+
+
+      if (timestampRef1 && timestampRef7) {
+    // Convert timestamps to milliseconds and ensure they are valid dates
+    const timestamp1 = new Date(timestampRef1);
+    const timestamp7 = new Date(timestampRef7);
+
+    if (timestamp1 && timestamp7) {
+        // Calculate the time difference in seconds
+        const timeDifferenceInSeconds = (timestamp1 - timestamp7) ;
+
+        // Display the time difference as a number in seconds
+        document.getElementById("time-difference-1-7").innerHTML = "Time Difference: " + timeDifferenceInSeconds + " seconds";
+    } else {
+        document.getElementById("time-difference-1-7").innerHTML = "Invalid timestamps";
+    }
+} else {
+    document.getElementById("time-difference-1-7").innerHTML = "Missing timestamps";
+}
+
+
+     
+
+
     </script>
   </body>
 </html>
