@@ -115,27 +115,27 @@
             </div>
             <div class="row"></div>
             <div class="row">
-              <div id="timestamp-display-2" class="timestamp"></div>
+              <div id="time-difference-7-2" class="timestamp"></div>
             </div>
           </div>
           <div class="col">
             <div class="row">
-              <div id="timestamp-display-3" class="timestamp"></div>
+              <div id="time-difference-7-3" class="timestamp"></div>
             </div>
             <div class="row">
               <div id="timestamp-display-7" class="timestamp"></div>
             </div>
             <div class="row">
-              <div id="timestamp-display-4" class="timestamp"></div>
+              <div id="time-difference-7-4" class="timestamp"></div>
             </div>
           </div>
           <div class="col">
             <div class="row">
-              <div id="timestamp-display-5" class="timestamp"></div>
+              <div id="time-difference-7-5" class="timestamp"></div>
             </div>
             <div class="row"></div>
             <div class="row">
-              <div id="timestamp-display-6" class="timestamp"></div>
+              <div id="time-difference-7-6" class="timestamp"></div>
             </div>
           </div>
         </div>
@@ -196,8 +196,8 @@
         timestamp6 = snapshot.val().unit6;
         timestamp7 = snapshot.val().unit7;
 
-        document.getElementById("timestamp-display-2").innerHTML =
-          "Timestamp Unit-1: " + timestamp1;
+        // document.getElementById("timestamp-display-2").innerHTML =
+        //   "Timestamp Unit-1: " + timestamp1;
 
         if (timestamp1 && timestamp7) {
           // Convert timestamps to milliseconds and ensure they are valid dates
@@ -220,6 +220,136 @@
           document.getElementById("time-difference-1-7").innerHTML =
             "Missing timestamps";
         }
+<<<<<<< HEAD
+=======
+      } else {
+        document.getElementById("time-difference-1-7").innerHTML =
+          "Missing timestamps";
+      }
+
+
+
+  //  ......................
+
+  
+  if (timestamp2 && timestamp7) {
+        // Convert timestamps to milliseconds and ensure they are valid dates
+        const timestampNew2 = new Date(parseInt(timestamp2, 10));
+        const timestampNew7 = new Date(parseInt(timestamp7, 10));
+
+        if (!isNaN(timestamp2) && !isNaN(timestamp7)) {
+          // Calculate the time difference in seconds
+          const timeDifferenceInSeconds = (timestampNew7 - timestampNew2) / 1000;
+
+          // Display the time difference as a number in seconds
+          document.getElementById("time-difference-7-2").innerHTML =
+            "Time Difference: " + timeDifferenceInSeconds + " seconds";
+        } else {
+          document.getElementById("time-difference-7-2").innerHTML =
+            "Invalid timestamps";
+        }
+      } else {
+        document.getElementById("time-difference-7-2").innerHTML =
+          "Missing timestamps";
+      }
+
+
+      // ....................
+
+      if (timestamp3 && timestamp7) {
+        // Convert timestamps to milliseconds and ensure they are valid dates
+        const timestampNew3 = new Date(parseInt(timestamp3, 10));
+        const timestampNew7 = new Date(parseInt(timestamp7, 10));
+
+        if (!isNaN(timestamp3) && !isNaN(timestamp7)) {
+          // Calculate the time difference in seconds
+          const timeDifferenceInSeconds = (timestampNew7 - timestampNew3) / 1000;
+
+          // Display the time difference as a number in seconds
+          document.getElementById("time-difference-7-3").innerHTML =
+            "Time Difference: " + timeDifferenceInSeconds + " seconds";
+        } else {
+          document.getElementById("time-difference-7-3").innerHTML =
+            "Invalid timestamps";
+        }
+      } else {
+        document.getElementById("time-difference-7-3").innerHTML =
+          "Missing timestamps";
+      }
+
+// ..........................
+
+if (timestamp4 && timestamp7) {
+        // Convert timestamps to milliseconds and ensure they are valid dates
+        const timestampNew4 = new Date(parseInt(timestamp4, 10));
+        const timestampNew7 = new Date(parseInt(timestamp7, 10));
+
+        if (!isNaN(timestamp4) && !isNaN(timestamp7)) {
+          // Calculate the time difference in seconds
+          const timeDifferenceInSeconds = (timestampNew7 - timestampNew4) / 1000;
+
+          // Display the time difference as a number in seconds
+          document.getElementById("time-difference-7-4").innerHTML =
+            "Time Difference: " + timeDifferenceInSeconds + " seconds";
+        } else {
+          document.getElementById("time-difference-7-4").innerHTML =
+            "Invalid timestamps";
+        }
+      } else {
+        document.getElementById("time-difference-7-4").innerHTML =
+          "Missing timestamps";
+      }
+
+      //  ......................
+
+  
+  if (timestamp5 && timestamp7) {
+        // Convert timestamps to milliseconds and ensure they are valid dates
+        const timestampNew5 = new Date(parseInt(timestamp5, 10));
+        const timestampNew7 = new Date(parseInt(timestamp7, 10));
+
+        if (!isNaN(timestamp5) && !isNaN(timestamp7)) {
+          // Calculate the time difference in seconds
+          const timeDifferenceInSeconds = (timestampNew7 - timestampNew5) / 1000;
+
+          // Display the time difference as a number in seconds
+          document.getElementById("time-difference-7-5").innerHTML =
+            "Time Difference: " + timeDifferenceInSeconds + " seconds";
+        } else {
+          document.getElementById("time-difference-7-5").innerHTML =
+            "Invalid timestamps";
+        }
+      } else {
+        document.getElementById("time-difference-7-5").innerHTML =
+          "Missing timestamps";
+      }
+
+
+      //  ......................
+
+  
+  if (timestamp6 && timestamp7) {
+        // Convert timestamps to milliseconds and ensure they are valid dates
+        const timestampNew6 = new Date(parseInt(timestamp6, 10));
+        const timestampNew7 = new Date(parseInt(timestamp7, 10));
+
+        if (!isNaN(timestamp6) && !isNaN(timestamp7)) {
+          // Calculate the time difference in seconds
+          const timeDifferenceInSeconds = (timestampNew7 - timestampNew6) / 1000;
+
+          // Display the time difference as a number in seconds
+          document.getElementById("time-difference-7-6").innerHTML =
+            "Time Difference: " + timeDifferenceInSeconds + " seconds";
+        } else {
+          document.getElementById("time-difference-7-6").innerHTML =
+            "Invalid timestamps";
+        }
+      } else {
+        document.getElementById("time-difference-7-6").innerHTML =
+          "Missing timestamps";
+      }
+
+>>>>>>> 7244786f3659159cfe53129ae4e65ea57e0a1cd2
       });
     </script>
   </body>
