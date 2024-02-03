@@ -198,15 +198,14 @@
       });
 
 
-
       if (timestampRef1 && timestampRef7) {
     // Convert timestamps to milliseconds and ensure they are valid dates
     const timestamp1 = new Date(timestampRef1);
     const timestamp7 = new Date(timestampRef7);
 
-    if (timestamp1 && timestamp7) {
+    if (!isNaN(timestamp1) && !isNaN(timestamp7)) {
         // Calculate the time difference in seconds
-        const timeDifferenceInSeconds = (timestamp1 - timestamp7) ;
+        const timeDifferenceInSeconds = (timestamp7 - timestamp1) / 1000;
 
         // Display the time difference as a number in seconds
         document.getElementById("time-difference-1-7").innerHTML = "Time Difference: " + timeDifferenceInSeconds + " seconds";
