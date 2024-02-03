@@ -8,8 +8,6 @@
 body
 {
     display: flex;
-    /* justify-content: center; */
-    /* align-items: center; */
     min-height: 100vh;
     background: url(./assets/muktasim-azlan-rjWfNR_AC5g-unsplash.jpg);
     background-size:cover;
@@ -53,6 +51,18 @@ body
     margin-bottom: 30px;
     color: #fff;
 }
+
+.box1 .form1 form2 .inputdropdown
+{
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    background: none;
+    border-bottom: 1px solid #12151e;
+    margin-bottom: 30px;
+    color: #fff;
+}
+
 .box1 .form1 form2 .inputbox span
 {
     position: absolute;
@@ -61,7 +71,128 @@ body
     color: #fff;
     
 }
-.box1 .form1 form2 .sub
+.box1 .form1 form2 .inputdropdown span
+{
+    position: absolute;
+    transform: translate(-20px ,-30px);
+    font-size: 14px;
+    color: #fff;
+    
+}
+
+*
+{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+body
+{
+    display: flex;
+    min-height: 100vh;
+    background: url(./assets/muktasim-azlan-rjWfNR_AC5g-unsplash.jpg);
+    background-size:cover;
+    background-repeat: no-repeat;
+    
+}
+.box1
+{
+    padding: 20px 30px;
+    width: 300px;
+    height: 700px;
+    backdrop-filter: blur(50px);
+    border-radius: 5px;
+    background: rgba(49, 49, 49, .2);
+    border: 1px solid rgba(255, 255, 255, .5);
+ 
+}
+.box1 .form1
+{
+    padding: 10px 20px;
+    
+}
+.box1 .form1 h2
+{
+    text-align: center;
+    color: #fff;
+}
+.box1 .form1 form2
+{
+    margin-top: 50px;
+   
+    align-items: center;
+}
+.box1 .form1 form2 .inputbox input
+{
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    background: none;
+    border-bottom: 1px solid #12151e;
+    margin-bottom: 30px;
+    color: #fff;
+}
+
+.box1 .form1 form2 .inputdropdown
+{
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    background: none;
+    border-bottom: 1px solid #12151e;
+    margin-bottom: 30px;
+    color: #fff;
+}
+
+.box1 .form1 form2 .inputbox span
+{
+    position: absolute;
+    transform: translateY(-80px);
+    font-size: 14px;
+    color: #fff;
+    
+}
+.box1 .form1 form2 .inputdropdown span
+{
+    position: absolute;
+    transform: translate(-20px ,-30px);
+    font-size: 14px;
+    color: #fff;
+    
+}
+
+.sub
+{
+    padding: 12px 10px;
+    color: #fff;
+    border: none;
+    outline: none;
+    background: #0cc0df;
+    cursor: pointer;
+    font-size: 12px;
+    margin-top: 10px;
+    margin-right: 20px;
+    
+}
+
+.btn{
+    display: flex;
+    flex-direction: row;
+}
+
+.box2
+{
+    padding: 20px 30px;
+    width: 900px;
+    height: 700px;
+    backdrop-filter: blur(50px);
+    border-radius: 5px;
+    background: rgba(49, 49, 49, .2);
+    border: 1px solid rgba(255, 255, 255, .5);
+ 
+}
+.box2 .sub
 {
     padding: 12px 5px;
     color: #fff;
@@ -73,6 +204,19 @@ body
     margin-top: 10px;
     
 }
+.image {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.timestamp{
+    backdrop-filter: blur(50px);
+    border-radius: 5px;
+    background: rgba(49, 49, 49, .2);
+    border: 1px solid rgba(255, 255, 255, .5); 
+}
+
+
 .btn{
     display: flex;
     flex-direction: row;

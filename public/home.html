@@ -50,10 +50,11 @@
         color: #fff;
         border: none;
         outline: none;
-        background: #0cc0df;
+        background: #8c52ff;
         cursor: pointer;
         font-size: 12px;
         margin-top: 10px;
+        margin-left: 55px;
       }
     </style>
   </head>
@@ -61,52 +62,78 @@
     <div class="row">
       <div class="col-3">
         <div class="box1 left">
-          <div class="form1">
-            <h2>Details</h2>
-            <form2>
-              <div class="inputbox">
-                <input type="text" value="" id="Fname" required />
-                <span>First Name</span>
-              </div>
-              <div class="inputbox">
-                <input type="text" value="" id="Lname" required />
-                <span>Last Name Name</span>
-              </div>
-              <div class="inputbox">
-                <input type="email" value="" id="email" required />
-                <span>E-mail</span>
-              </div>
-              <div class="inputbox">
-                <input type="number" value="" id="phone" required />
-                <span>Phone Number</span>
-              </div>
-              <div class="inputbox">
-                <input type="text" value="" id="Uni" required />
-                <span>University</span>
-              </div>
-              <div class="inputbox">
-                <input type="number" value="" id="Inum" required />
-                <span>Index Number</span>
-              </div>
-              <div classname="btn">
-                <input type="submit" value="Start" class="sub" id="StartBtn" />
-                <input type="submit" value="Stop" class="sub" id="StopBtn" />
-                <input type="submit" value="Reset" class="sub" id="ResetBtn" />
-              </div>
-              <div class="addbtn">
-                <input type="submit" value="Add" class="add" id="AddBtn" />
-              </div>
-            </form2>
-          </div>
+          <form action="" id="myform">
+            <div class="form1">
+              <h2>Details</h2>
+              <form2>
+                <div class="inputbox">
+                  <input type="text" value="" id="Fname" required />
+                  <span>First Name</span>
+                </div>
+                <div class="inputbox">
+                  <input type="text" value="" id="Lname" required />
+                  <span>Last Name</span>
+                </div>
+                <div class="inputbox">
+                  <input type="number" value="" id="age" required />
+                  <span>Age</span>
+                </div>
+  
+                <div class="inputdropdown">
+                  <!-- Replace text input with a dropdown for 'Sex' -->
+                  <span>Sex</span>
+                  <select id="sex" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div class="inputdropdown">
+                  <span>District</span>
+                  <!-- Replace text input with a dropdown for 'District' -->
+                  <select id="district" required>
+                    <option value="colombo">Colombo</option>
+                    <option value="gampaha">Gampaha</option>
+                    <option value="kalutara">Kalutara</option>
+                    <option value="kandy">Kandy</option>
+                    <option value="matale">Matale</option>
+                    <option value="nuwaraeliya">Nuwara Eliya</option>
+                    <option value="galle">Galle</option>
+                    <option value="matara">Matara</option>
+                    <option value="hambantota">Hambantota</option>
+                    <option value="jaffna">Jaffna</option>
+                    <option value="kilinochchi">Kilinochchi</option>
+                    <option value="mannar">Mannar</option>
+                    <option value="mullaitivu">Mullaitivu</option>
+                    <option value="vavuniya">Vavuniya</option>
+                    <option value="puttalam">Puttalam</option>
+                    <option value="kurunegala">Kurunegala</option>
+                    <option value="anuradhapura">Anuradhapura</option>
+                    <option value="polonnaruwa">Polonnaruwa</option>
+                    <option value="badulla">Badulla</option>
+                    <option value="monaragala">Monaragala</option>
+                    <option value="ratnapura">Ratnapura</option>
+                    <option value="kegalle">Kegalle</option>
+                  </select>
+                </div>
+  
+                <div class="btn">
+                  <input type="submit" value="Start" class="sub" id="StartBtn" />
+                  <input type="submit" value="Stop" class="sub" id="StopBtn" />
+                  <input type="submit" value="Reset" class="sub" id="ResetBtn" />
+                </div>
+                <div class="addbtn">
+                  <input type="submit" value="Add" class="add" id="AddBtn" />
+                </div>
+              </form2>
+            </div>
+          </form>
+          
         </div>
       </div>
       <div class="col-1"></div>
       <div class="col-8">
-        <img
-          src="assets/mudassir-ali-Ygy6aPp6980-unsplash.jpg"
-          class="img-fluid image"
-          alt="..."
-        />
+        <img src="assets/playground.jpg" class="img-fluid image" alt="..." />
 
         <div class="row">
           <div class="col">
@@ -150,6 +177,7 @@
         ref,
         onValue,
         set,
+        push,
       } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
 
       // Firebase configuration
@@ -176,15 +204,45 @@
         timestamp5,
         timestamp6,
         timestamp7;
-        
+
       let fname = document.getElementById("Fname");
       let lname = document.getElementById("Lname");
-      let email = document.getElementById("Email");
-      let phone = document.getElementById("Phone");
-      let uni = document.getElementById("Uni");
-      let inum = document.getElementById("Inum");
+      let age = document.getElementById("age");
+      let email = document.getElementById("sex");
+      let phone = document.getElementById("district");
 
       let add = document.getElementById("AddBtn");
+      let reset = document.getElementById("ResetBtn");
+
+      function AddData() {
+        if (
+          fname.value.trim() === "" ||
+          lname.value.trim() === "" ||
+          age.value.trim() === ""
+        ) {
+          alert("Please fill in all required fields.");
+          return;
+        }
+
+        const PlayerListRef = ref(database, "players");
+        const newPlayerRef = push(PlayerListRef);
+
+        set(newPlayerRef, {
+          NameOfPlayer: { firstname: Fname.value, lastname: Lname.value },
+          age: age.value,
+          sex: sex.value,
+          district: district.value,
+        });
+
+        resetFormField();
+      }
+
+      function resetFormField() {
+        document.getElementById("Form1").reset();
+      }
+
+      AddBtn.addEventListener("click", AddData);
+      ResetBtn.addEventListener("click", resetFormField);
 
       // Listen for changes in the timestamp value
       onValue(timestampRef, (snapshot) => {
@@ -195,9 +253,6 @@
         timestamp5 = snapshot.val().unit5;
         timestamp6 = snapshot.val().unit6;
         timestamp7 = snapshot.val().unit7;
-
-        // document.getElementById("timestamp-display-2").innerHTML =
-        //   "Timestamp Unit-1: " + timestamp1;
 
         if (timestamp1 && timestamp7) {
           // Convert timestamps to milliseconds and ensure they are valid dates
@@ -220,136 +275,126 @@
           document.getElementById("time-difference-1-7").innerHTML =
             "Missing timestamps";
         }
-<<<<<<< HEAD
-=======
-      } else {
-        document.getElementById("time-difference-1-7").innerHTML =
-          "Missing timestamps";
-      }
 
+        //  ......................
 
+        if (timestamp2 && timestamp7) {
+          // Convert timestamps to milliseconds and ensure they are valid dates
+          const timestampNew2 = new Date(parseInt(timestamp2, 10));
+          const timestampNew7 = new Date(parseInt(timestamp7, 10));
 
-  //  ......................
+          if (!isNaN(timestamp2) && !isNaN(timestamp7)) {
+            // Calculate the time difference in seconds
+            const timeDifferenceInSeconds =
+              (timestampNew7 - timestampNew2) / 1000;
 
-  
-  if (timestamp2 && timestamp7) {
-        // Convert timestamps to milliseconds and ensure they are valid dates
-        const timestampNew2 = new Date(parseInt(timestamp2, 10));
-        const timestampNew7 = new Date(parseInt(timestamp7, 10));
-
-        if (!isNaN(timestamp2) && !isNaN(timestamp7)) {
-          // Calculate the time difference in seconds
-          const timeDifferenceInSeconds = (timestampNew7 - timestampNew2) / 1000;
-
-          // Display the time difference as a number in seconds
-          document.getElementById("time-difference-7-2").innerHTML =
-            "Time Difference: " + timeDifferenceInSeconds + " seconds";
+            // Display the time difference as a number in seconds
+            document.getElementById("time-difference-7-2").innerHTML =
+              "Time Difference: " + timeDifferenceInSeconds + " seconds";
+          } else {
+            document.getElementById("time-difference-7-2").innerHTML =
+              "Invalid timestamps";
+          }
         } else {
           document.getElementById("time-difference-7-2").innerHTML =
-            "Invalid timestamps";
+            "Missing timestamps";
         }
-      } else {
-        document.getElementById("time-difference-7-2").innerHTML =
-          "Missing timestamps";
-      }
 
+        // ....................
 
-      // ....................
+        if (timestamp3 && timestamp7) {
+          // Convert timestamps to milliseconds and ensure they are valid dates
+          const timestampNew3 = new Date(parseInt(timestamp3, 10));
+          const timestampNew7 = new Date(parseInt(timestamp7, 10));
 
-      if (timestamp3 && timestamp7) {
-        // Convert timestamps to milliseconds and ensure they are valid dates
-        const timestampNew3 = new Date(parseInt(timestamp3, 10));
-        const timestampNew7 = new Date(parseInt(timestamp7, 10));
+          if (!isNaN(timestamp3) && !isNaN(timestamp7)) {
+            // Calculate the time difference in seconds
+            const timeDifferenceInSeconds =
+              (timestampNew7 - timestampNew3) / 1000;
 
-        if (!isNaN(timestamp3) && !isNaN(timestamp7)) {
-          // Calculate the time difference in seconds
-          const timeDifferenceInSeconds = (timestampNew7 - timestampNew3) / 1000;
-
-          // Display the time difference as a number in seconds
-          document.getElementById("time-difference-7-3").innerHTML =
-            "Time Difference: " + timeDifferenceInSeconds + " seconds";
+            // Display the time difference as a number in seconds
+            document.getElementById("time-difference-7-3").innerHTML =
+              "Time Difference: " + timeDifferenceInSeconds + " seconds";
+          } else {
+            document.getElementById("time-difference-7-3").innerHTML =
+              "Invalid timestamps";
+          }
         } else {
           document.getElementById("time-difference-7-3").innerHTML =
-            "Invalid timestamps";
+            "Missing timestamps";
         }
-      } else {
-        document.getElementById("time-difference-7-3").innerHTML =
-          "Missing timestamps";
-      }
 
-// ..........................
+        // ..........................
 
-if (timestamp4 && timestamp7) {
-        // Convert timestamps to milliseconds and ensure they are valid dates
-        const timestampNew4 = new Date(parseInt(timestamp4, 10));
-        const timestampNew7 = new Date(parseInt(timestamp7, 10));
+        if (timestamp4 && timestamp7) {
+          // Convert timestamps to milliseconds and ensure they are valid dates
+          const timestampNew4 = new Date(parseInt(timestamp4, 10));
+          const timestampNew7 = new Date(parseInt(timestamp7, 10));
 
-        if (!isNaN(timestamp4) && !isNaN(timestamp7)) {
-          // Calculate the time difference in seconds
-          const timeDifferenceInSeconds = (timestampNew7 - timestampNew4) / 1000;
+          if (!isNaN(timestamp4) && !isNaN(timestamp7)) {
+            // Calculate the time difference in seconds
+            const timeDifferenceInSeconds =
+              (timestampNew7 - timestampNew4) / 1000;
 
-          // Display the time difference as a number in seconds
-          document.getElementById("time-difference-7-4").innerHTML =
-            "Time Difference: " + timeDifferenceInSeconds + " seconds";
+            // Display the time difference as a number in seconds
+            document.getElementById("time-difference-7-4").innerHTML =
+              "Time Difference: " + timeDifferenceInSeconds + " seconds";
+          } else {
+            document.getElementById("time-difference-7-4").innerHTML =
+              "Invalid timestamps";
+          }
         } else {
           document.getElementById("time-difference-7-4").innerHTML =
-            "Invalid timestamps";
+            "Missing timestamps";
         }
-      } else {
-        document.getElementById("time-difference-7-4").innerHTML =
-          "Missing timestamps";
-      }
 
-      //  ......................
+        //  ......................
 
-  
-  if (timestamp5 && timestamp7) {
-        // Convert timestamps to milliseconds and ensure they are valid dates
-        const timestampNew5 = new Date(parseInt(timestamp5, 10));
-        const timestampNew7 = new Date(parseInt(timestamp7, 10));
+        if (timestamp5 && timestamp7) {
+          // Convert timestamps to milliseconds and ensure they are valid dates
+          const timestampNew5 = new Date(parseInt(timestamp5, 10));
+          const timestampNew7 = new Date(parseInt(timestamp7, 10));
 
-        if (!isNaN(timestamp5) && !isNaN(timestamp7)) {
-          // Calculate the time difference in seconds
-          const timeDifferenceInSeconds = (timestampNew7 - timestampNew5) / 1000;
+          if (!isNaN(timestamp5) && !isNaN(timestamp7)) {
+            // Calculate the time difference in seconds
+            const timeDifferenceInSeconds =
+              (timestampNew7 - timestampNew5) / 1000;
 
-          // Display the time difference as a number in seconds
-          document.getElementById("time-difference-7-5").innerHTML =
-            "Time Difference: " + timeDifferenceInSeconds + " seconds";
+            // Display the time difference as a number in seconds
+            document.getElementById("time-difference-7-5").innerHTML =
+              "Time Difference: " + timeDifferenceInSeconds + " seconds";
+          } else {
+            document.getElementById("time-difference-7-5").innerHTML =
+              "Invalid timestamps";
+          }
         } else {
           document.getElementById("time-difference-7-5").innerHTML =
-            "Invalid timestamps";
+            "Missing timestamps";
         }
-      } else {
-        document.getElementById("time-difference-7-5").innerHTML =
-          "Missing timestamps";
-      }
 
+        //  ......................
 
-      //  ......................
+        if (timestamp6 && timestamp7) {
+          // Convert timestamps to milliseconds and ensure they are valid dates
+          const timestampNew6 = new Date(parseInt(timestamp6, 10));
+          const timestampNew7 = new Date(parseInt(timestamp7, 10));
 
-  
-  if (timestamp6 && timestamp7) {
-        // Convert timestamps to milliseconds and ensure they are valid dates
-        const timestampNew6 = new Date(parseInt(timestamp6, 10));
-        const timestampNew7 = new Date(parseInt(timestamp7, 10));
+          if (!isNaN(timestamp6) && !isNaN(timestamp7)) {
+            // Calculate the time difference in seconds
+            const timeDifferenceInSeconds =
+              (timestampNew7 - timestampNew6) / 1000;
 
-        if (!isNaN(timestamp6) && !isNaN(timestamp7)) {
-          // Calculate the time difference in seconds
-          const timeDifferenceInSeconds = (timestampNew7 - timestampNew6) / 1000;
-
-          // Display the time difference as a number in seconds
-          document.getElementById("time-difference-7-6").innerHTML =
-            "Time Difference: " + timeDifferenceInSeconds + " seconds";
+            // Display the time difference as a number in seconds
+            document.getElementById("time-difference-7-6").innerHTML =
+              "Time Difference: " + timeDifferenceInSeconds + " seconds";
+          } else {
+            document.getElementById("time-difference-7-6").innerHTML =
+              "Invalid timestamps";
+          }
         } else {
           document.getElementById("time-difference-7-6").innerHTML =
-            "Invalid timestamps";
+            "Missing timestamps";
         }
-      } else {
-        document.getElementById("time-difference-7-6").innerHTML =
-          "Missing timestamps";
-      }
-
->>>>>>> 7244786f3659159cfe53129ae4e65ea57e0a1cd2
       });
     </script>
   </body>
