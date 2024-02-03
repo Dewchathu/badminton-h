@@ -43,6 +43,18 @@
         margin-left: auto;
         margin-right: auto;
       }
+
+      .add {
+        padding: 10px;
+        width: 100px;
+        color: #fff;
+        border: none;
+        outline: none;
+        background: #0cc0df;
+        cursor: pointer;
+        font-size: 12px;
+        margin-top: 10px;
+      }
     </style>
   </head>
   <body>
@@ -77,9 +89,12 @@
                 <span>Index Number</span>
               </div>
               <div classname="btn">
-                <input type="submit" value="Start" class="sub" id="AddBtn" />
-                <input type="submit" value="Stop" class="sub" id="Retrieve" />
-                <input type="submit" value="Reset" class="sub" id="Update" />
+                <input type="submit" value="Start" class="sub" id="StartBtn" />
+                <input type="submit" value="Stop" class="sub" id="StopBtn" />
+                <input type="submit" value="Reset" class="sub" id="ResetBtn" />
+              </div>
+              <div class="addbtn">
+                <input type="submit" value="Add" class="add" id="AddBtn" />
               </div>
             </form2>
           </div>
@@ -134,6 +149,7 @@
         getDatabase,
         ref,
         onValue,
+        set,
       } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
 
       // Firebase configuration
@@ -149,20 +165,26 @@
         measurementId: "G-KKR7HHJ099",
       };
 
-      // Initialize Firebase
       const app = initializeApp(firebaseConfig);
       const database = getDatabase(app);
-
-      // Reference to the timestamp in the database
       const timestampRef = ref(database, "ir_test/");
-     
-      let timestamp1;
-      let timestamp2;
-      let timestamp3;
-      let timestamp4;
-      let timestamp5;
-      let timestamp6;
-      let timestamp7;
+
+      let timestamp1,
+        timestamp2,
+        timestamp3,
+        timestamp4,
+        timestamp5,
+        timestamp6,
+        timestamp7;
+        
+      let fname = document.getElementById("Fname");
+      let lname = document.getElementById("Lname");
+      let email = document.getElementById("Email");
+      let phone = document.getElementById("Phone");
+      let uni = document.getElementById("Uni");
+      let inum = document.getElementById("Inum");
+
+      let add = document.getElementById("AddBtn");
 
       // Listen for changes in the timestamp value
       onValue(timestampRef, (snapshot) => {
@@ -177,29 +199,28 @@
         document.getElementById("timestamp-display-2").innerHTML =
           "Timestamp Unit-1: " + timestamp1;
 
-          if (timestamp1 && timestamp7) {
-        // Convert timestamps to milliseconds and ensure they are valid dates
-        const timestampNew1 = new Date(parseInt(timestamp1, 10));
-        const timestampNew7 = new Date(parseInt(timestamp2, 10));
+        if (timestamp1 && timestamp7) {
+          // Convert timestamps to milliseconds and ensure they are valid dates
+          const timestampNew1 = new Date(parseInt(timestamp1, 10));
+          const timestampNew7 = new Date(parseInt(timestamp2, 10));
 
-        if (!isNaN(timestamp1) && !isNaN(timestamp7)) {
-          // Calculate the time difference in seconds
-          const timeDifferenceInSeconds = (timestampNew7 - timestampNew1) / 1000;
+          if (!isNaN(timestamp1) && !isNaN(timestamp7)) {
+            // Calculate the time difference in seconds
+            const timeDifferenceInSeconds =
+              (timestampNew7 - timestampNew1) / 1000;
 
-          // Display the time difference as a number in seconds
-          document.getElementById("time-difference-1-7").innerHTML =
-            "Time Difference: " + timeDifferenceInSeconds + " seconds";
+            // Display the time difference as a number in seconds
+            document.getElementById("time-difference-1-7").innerHTML =
+              "Time Difference: " + timeDifferenceInSeconds + " seconds";
+          } else {
+            document.getElementById("time-difference-1-7").innerHTML =
+              "Invalid timestamps";
+          }
         } else {
           document.getElementById("time-difference-1-7").innerHTML =
-            "Invalid timestamps";
+            "Missing timestamps";
         }
-      } else {
-        document.getElementById("time-difference-1-7").innerHTML =
-          "Missing timestamps";
-      }
-
       });
-
     </script>
   </body>
 </html>
