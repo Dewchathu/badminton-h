@@ -4,27 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Firebase Data Display</title>
-<<<<<<< HEAD
-    <link rel="stylesheet" href="home.css">
-=======
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="home.css">
->>>>>>> b1269b45fba533331e29670e25cda20303144db4
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="home.css" />
 
     <!-- Add dark mode styles -->
     <style>
       body {
-        background-color: #2c3e50; 
+        background-color: #2c3e50;
         color: #ecf0f1;
-        font-family: 'Arial', sans-serif;
+        font-family: "Arial", sans-serif;
         background: url(./assets/muktasim-azlan-rjWfNR_AC5g-unsplash.jpg);
-        background-size:cover;
+        background-size: cover;
         background-repeat: no-repeat;
       }
 
       h1 {
-        color: #3498db; 
+        color: #3498db;
       }
 
       .timestamp {
@@ -33,97 +39,95 @@
         margin-bottom: 10px;
         border: #ecf0f1 solid 1px;
         border-radius: 10px;
-        max-width: 300px; 
+        max-width: 300px;
         margin-left: auto;
         margin-right: auto;
       }
     </style>
   </head>
   <body>
-
     <div class="row">
-      <div class="col-3  ">
+      <div class="col-3">
         <div class="box1 left">
-            <div class="form1">
-                <h2>Details</h2>
-                <form2>
-                    <div class="inputbox">
-                        <input type="text" value="" id="Fname" required>
-                        <span>First Name</span>
-                    </div>
-                    <div class="inputbox">
-                        <input type="text" value="" id="Lname" required>
-                        <span>Last Name Name</span>
-                    </div>
-                    <div class="inputbox">
-                        <input type="email" value="" id="email" required>
-                        <span>E-mail</span>
-                    </div>
-                    <div class="inputbox">
-                        <input type="number" value="" id="phone" required>
-                        <span>Phone Number</span>
-                    </div>
-                    <div class="inputbox">
-                        <input type="text" value="" id="Uni" required>
-                        <span>University</span>
-                    </div>
-                    <div class="inputbox">
-                        <input type="number" value="" id="Inum" required>
-                        <span>Index Number</span>
-                    </div>
-                    <div classname="btn">
-                        <input type="submit" value="Start" class="sub" id="AddBtn">
-                        <input type="submit" value="Stop" class="sub" id="Retrieve">
-                        <input type="submit" value="Reset" class="sub" id="Update">
-                        
-                    </div>
-                                      
-                </form2>
-            </div>
+          <div class="form1">
+            <h2>Details</h2>
+            <form2>
+              <div class="inputbox">
+                <input type="text" value="" id="Fname" required />
+                <span>First Name</span>
+              </div>
+              <div class="inputbox">
+                <input type="text" value="" id="Lname" required />
+                <span>Last Name Name</span>
+              </div>
+              <div class="inputbox">
+                <input type="email" value="" id="email" required />
+                <span>E-mail</span>
+              </div>
+              <div class="inputbox">
+                <input type="number" value="" id="phone" required />
+                <span>Phone Number</span>
+              </div>
+              <div class="inputbox">
+                <input type="text" value="" id="Uni" required />
+                <span>University</span>
+              </div>
+              <div class="inputbox">
+                <input type="number" value="" id="Inum" required />
+                <span>Index Number</span>
+              </div>
+              <div classname="btn">
+                <input type="submit" value="Start" class="sub" id="AddBtn" />
+                <input type="submit" value="Stop" class="sub" id="Retrieve" />
+                <input type="submit" value="Reset" class="sub" id="Update" />
+              </div>
+            </form2>
+          </div>
         </div>
       </div>
-       <div class="col-1 ">
-       
-      </div>
-      <div class="col-8 ">
-        <img src="assets/mudassir-ali-Ygy6aPp6980-unsplash.jpg" class="img-fluid image" alt="...">
+      <div class="col-1"></div>
+      <div class="col-8">
+        <img
+          src="assets/mudassir-ali-Ygy6aPp6980-unsplash.jpg"
+          class="img-fluid image"
+          alt="..."
+        />
 
-
-       
-        
-<div class="row">
-  <div class="col">
-    <div class="row"><div id="time-difference-1-7" class="timestamp"></div></div>
-    <div class="row"></div>
-    <div class="row"> <div id="timestamp-display-2" class="timestamp"></div></div>
-  </div>
-  <div class="col">
-    <div class="row"><div id="timestamp-display-3" class="timestamp"></div></div>
-    <div class="row"><div id="timestamp-display-7" class="timestamp"></div></div>
-    <div class="row"><div id="timestamp-display-4" class="timestamp"></div></div>
-  </div>
-  <div class="col">
-    <div class="row"><div id="timestamp-display-5" class="timestamp"></div></div>
-    <div class="row"></div>
-    <div class="row"><div id="timestamp-display-6" class="timestamp"></div></div>
-  </div>
-</div>   
-       
-        
-        
-      
-        
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <div id="time-difference-1-7" class="timestamp"></div>
+            </div>
+            <div class="row"></div>
+            <div class="row">
+              <div id="timestamp-display-2" class="timestamp"></div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div id="timestamp-display-3" class="timestamp"></div>
+            </div>
+            <div class="row">
+              <div id="timestamp-display-7" class="timestamp"></div>
+            </div>
+            <div class="row">
+              <div id="timestamp-display-4" class="timestamp"></div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div id="timestamp-display-5" class="timestamp"></div>
+            </div>
+            <div class="row"></div>
+            <div class="row">
+              <div id="timestamp-display-6" class="timestamp"></div>
+            </div>
+          </div>
+        </div>
       </div>
-      
     </div>
 
-
-
-
-   
-
     <script type="module">
-
       // Import the functions you need from the SDKs
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
       import {
@@ -132,8 +136,8 @@
         onValue,
       } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
 
-       // Firebase configuration
-       const firebaseConfig = {
+      // Firebase configuration
+      const firebaseConfig = {
         apiKey: "AIzaSyD0wYYVfaBvSaktiXMQ0tCc2vWdxmAS2k8",
         authDomain: "badminton-h.firebaseapp.com",
         databaseURL:
@@ -150,79 +154,51 @@
       const database = getDatabase(app);
 
       // Reference to the timestamp in the database
-      const timestampRef1 = ref(database, "ir_test/unit1/timestamp");
-      const timestampRef2 = ref(database, "ir_test/unit2/timestamp");
-      const timestampRef3 = ref(database, "ir_test/unit3/timestamp");
-      const timestampRef4 = ref(database, "ir_test/unit4/timestamp");
-      const timestampRef5 = ref(database, "ir_test/unit5/timestamp");
-      const timestampRef6 = ref(database, "ir_test/unit6/timestamp");
-      const timestampRef7 = ref(database, "ir_test/unit7/timestamp");
-      
-
-
-
-
-      
+      const timestampRef = ref(database, "ir_test/");
+     
+      let timestamp1;
+      let timestamp2;
+      let timestamp3;
+      let timestamp4;
+      let timestamp5;
+      let timestamp6;
+      let timestamp7;
 
       // Listen for changes in the timestamp value
-      onValue(timestampRef1, (snapshot) => {
-        const timestamp = snapshot.val();
-        document.getElementById("timestamp-display-1").innerHTML = "Timestamp Unit-1: " + timestamp;
-       
+      onValue(timestampRef, (snapshot) => {
+        timestamp1 = snapshot.val().unit1;
+        timestamp2 = snapshot.val().unit2;
+        timestamp3 = snapshot.val().unit3;
+        timestamp4 = snapshot.val().unit4;
+        timestamp5 = snapshot.val().unit5;
+        timestamp6 = snapshot.val().unit6;
+        timestamp7 = snapshot.val().unit7;
+
+        document.getElementById("timestamp-display-2").innerHTML =
+          "Timestamp Unit-1: " + timestamp1;
+
+          if (timestamp1 && timestamp7) {
+        // Convert timestamps to milliseconds and ensure they are valid dates
+        const timestampNew1 = new Date(parseInt(timestamp1, 10));
+        const timestampNew7 = new Date(parseInt(timestamp2, 10));
+
+        if (!isNaN(timestamp1) && !isNaN(timestamp7)) {
+          // Calculate the time difference in seconds
+          const timeDifferenceInSeconds = (timestampNew7 - timestampNew1) / 1000;
+
+          // Display the time difference as a number in seconds
+          document.getElementById("time-difference-1-7").innerHTML =
+            "Time Difference: " + timeDifferenceInSeconds + " seconds";
+        } else {
+          document.getElementById("time-difference-1-7").innerHTML =
+            "Invalid timestamps";
+        }
+      } else {
+        document.getElementById("time-difference-1-7").innerHTML =
+          "Missing timestamps";
+      }
+
       });
-
-      onValue(timestampRef2, (snapshot) => {
-        const timestamp = snapshot.val();
-        document.getElementById("timestamp-display-2").innerHTML = "Timestamp Unit-2: " + timestamp;
-      });
-
-      onValue(timestampRef3, (snapshot) => {
-        const timestamp = snapshot.val();
-        document.getElementById("timestamp-display-3").innerHTML = "Timestamp Unit-3: " + timestamp;
-      });
-
-      onValue(timestampRef4, (snapshot) => {
-        const timestamp = snapshot.val();
-        document.getElementById("timestamp-display-4").innerHTML = "Timestamp Unit-4: " + timestamp;
-      });
-
-      onValue(timestampRef5, (snapshot) => {
-        const timestamp = snapshot.val();
-        document.getElementById("timestamp-display-5").innerHTML = "Timestamp Unit-5: " + timestamp;
-      });
-
-      onValue(timestampRef6, (snapshot) => {
-        const timestamp = snapshot.val();
-        document.getElementById("timestamp-display-6").innerHTML = "Timestamp Unit-6: " + timestamp;
-      });
-
-      onValue(timestampRef7, (snapshot) => {
-        const timestamp = snapshot.val();
-        document.getElementById("timestamp-display-7").innerHTML = "Timestamp Unit-7: " + timestamp;
-      });
-
-
-      if (timestampRef1 && timestampRef7) {
-    // Convert timestamps to milliseconds and ensure they are valid dates
-    const timestamp1 = new Date(timestampRef1);
-    const timestamp7 = new Date(timestampRef7);
-
-    if (!isNaN(timestamp1) && !isNaN(timestamp7)) {
-        // Calculate the time difference in seconds
-        const timeDifferenceInSeconds = (timestamp7 - timestamp1) / 1000;
-
-        // Display the time difference as a number in seconds
-        document.getElementById("time-difference-1-7").innerHTML = "Time Difference: " + timeDifferenceInSeconds + " seconds";
-    } else {
-        document.getElementById("time-difference-1-7").innerHTML = "Invalid timestamps";
-    }
-} else {
-    document.getElementById("time-difference-1-7").innerHTML = "Missing timestamps";
-}
-
-
-     
-
 
     </script>
   </body>

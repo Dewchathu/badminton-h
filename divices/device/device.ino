@@ -15,6 +15,9 @@
 #define WIFI_LED D3
 #define SENSOR_LED D4
 
+#define USER_EMAIL "admin@gmail.com"
+#define USER_PASSWORD "admin123"
+
 FirebaseData fbdo;
 FirebaseAuth auth;
 FirebaseConfig config;
@@ -47,20 +50,18 @@ void setup() {
   config.api_key = API_KEY;
   config.database_url = DATABASE_URL;
 
-  if (Firebase.signUp(&config, &auth, "", "")) {
-    Serial.println("Firebase sign up successful");
-    signupOK = true;
-  } else {
-    Serial.printf("Firebase sign up failed: %s\n", config.signer.signupError.message.c_str());
-  }
+  auth.user.email = USER_EMAIL;
+  auth.user.password = USER_PASSWORD;
+ 
 
   config.token_status_callback = tokenStatusCallback;
   Firebase.begin(&config, &auth);
   Firebase.reconnectWiFi(true);
 }
 
+
 void loop() {
-  if (Firebase.ready() && signupOK) {
+  if (Firebase.ready()) {
     timeClient.update();
 
     if (!detectWave()) {
@@ -69,7 +70,7 @@ void loop() {
       unsigned long currentMillis = timeClient.getEpochTime();
       String timestamp = String(currentMillis);
 
-      String path = "ir_test/unit1/timestamp";
+      String path = "ir_test/unit7";
       if (Firebase.RTDB.setString(&fbdo, path.c_str(), timestamp.c_str())) {
         Serial.println("PASSED");
         Serial.println("PATH: " + fbdo.dataPath());
