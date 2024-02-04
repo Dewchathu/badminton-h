@@ -305,11 +305,11 @@ body
 }
 
 .timestamp3 {
-    bottom: 227px;
+    top: 437px;
     left: 620px;
   }
 .timestamp4 {
-    bottom: 177px;
+    top: 485px;
     left: 680px;
   }
 
@@ -324,12 +324,12 @@ body
   }
 
 .timestamp7 {
-    bottom: 227px;
+    top: 437px;
     left: 835px;
   }
 
 .timestamp8 {
-    bottom: 227px;
+    top: 437px;
     left: 955px;
   }
 
@@ -344,11 +344,11 @@ body
   }
 
 .timestamp11 {
-    bottom: 177px;
+    top: 485px;
     left: 1085px;
   }
   
 .timestamp12 {
-    bottom: 227px;
+    top: 437px;
     left: 1170px;
   }
