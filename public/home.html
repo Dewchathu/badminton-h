@@ -17,46 +17,6 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="home.css" />
-
-    <!-- Add dark mode styles -->
-    <style>
-      body {
-        background-color: #2c3e50;
-        color: #ecf0f1;
-        font-family: "Arial", sans-serif;
-        background: url(./assets/muktasim-azlan-rjWfNR_AC5g-unsplash.jpg);
-        background-size: cover;
-        background-repeat: no-repeat;
-      }
-
-      h1 {
-        color: #3498db;
-      }
-
-      .timestamp {
-        color: #ecf0f1;
-        padding: 20px;
-        margin-bottom: 10px;
-        border: #ecf0f1 solid 1px;
-        border-radius: 10px;
-        max-width: 300px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .add {
-        padding: 10px;
-        width: 100px;
-        color: #fff;
-        border: none;
-        outline: none;
-        background: #8c52ff;
-        cursor: pointer;
-        font-size: 12px;
-        margin-top: 10px;
-        margin-left: 55px;
-      }
-    </style>
   </head>
   <body>
     <div class="row">
@@ -134,268 +94,256 @@
       <div class="col-1"></div>
       <div class="col-8">
         <img src="assets/playground.jpg" class="img-fluid image" alt="..." />
+          <div id="time-difference-7-1" class="timestamp1">1</div>
+          <div id="time-difference-1-7" class="timestamp2">1</div>
+          <div id="time-difference-7-2" class="timestamp3">1</div>
+          <div id="time-difference-2-7" class="timestamp4">1</div>
+          <div id="time-difference-7-3" class="timestamp5">1</div>
+          <div id="time-difference-3-7" class="timestamp6">1</div>
+          <div id="time-difference-7-4" class="timestamp7">1</div>
+          <div id="time-difference-4-7" class="timestamp8">1</div>
+          <div id="time-difference-7-5" class="timestamp9">1</div>
+          <div id="time-difference-5-7" class="timestamp10">1</div>
+          <div id="time-difference-7-6" class="timestamp11">1</div>
+          <div id="time-difference-6-7" class="timestamp12">1</div>
 
-        <div class="row">
-          <div class="col">
-            <div class="row">
-              <div id="time-difference-1-7" class="timestamp"></div>
-            </div>
-            <div class="row"></div>
-            <div class="row">
-              <div id="time-difference-7-2" class="timestamp"></div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="row">
-              <div id="time-difference-7-3" class="timestamp"></div>
-            </div>
-            <div class="row">
-              <div id="timestamp-display-7" class="timestamp"></div>
-            </div>
-            <div class="row">
-              <div id="time-difference-7-4" class="timestamp"></div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="row">
-              <div id="time-difference-7-5" class="timestamp"></div>
-            </div>
-            <div class="row"></div>
-            <div class="row">
-              <div id="time-difference-7-6" class="timestamp"></div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
 
+
+
+
+
+
+
+
+
     <script type="module">
-      // Import the functions you need from the SDKs
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
-      import {
-        getDatabase,
-        ref,
-        onValue,
-        set,
-        push,
-      } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
 
-      // Firebase configuration
-      const firebaseConfig = {
-        apiKey: "AIzaSyD0wYYVfaBvSaktiXMQ0tCc2vWdxmAS2k8",
-        authDomain: "badminton-h.firebaseapp.com",
-        databaseURL:
-          "https://badminton-h-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "badminton-h",
-        storageBucket: "badminton-h.appspot.com",
-        messagingSenderId: "370589389980",
-        appId: "1:370589389980:web:de228c53e880e2f2510959",
-        measurementId: "G-KKR7HHJ099",
-      };
+        // Import the functions you need from the SDKs
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
+  import {
+    getDatabase,
+    ref,
+    onValue,
+    set,
+    push,
+  } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
 
-      const app = initializeApp(firebaseConfig);
-      const database = getDatabase(app);
-      const timestampRef = ref(database, "ir_test/");
+  // Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyD0wYYVfaBvSaktiXMQ0tCc2vWdxmAS2k8",
+    authDomain: "badminton-h.firebaseapp.com",
+    databaseURL:
+      "https://badminton-h-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "badminton-h",
+    storageBucket: "badminton-h.appspot.com",
+    messagingSenderId: "370589389980",
+    appId: "1:370589389980:web:de228c53e880e2f2510959",
+    measurementId: "G-KKR7HHJ099",
+  };
+  const app = initializeApp(firebaseConfig);
+  const database = getDatabase(app);
+  const timestampRef = ref(database, "ir_test/");
 
-      let timestamp1,
-        timestamp2,
-        timestamp3,
-        timestamp4,
-        timestamp5,
-        timestamp6,
-        timestamp7;
+  let timestamp1,
+    timestamp2,
+    timestamp3,
+    timestamp4,
+    timestamp5,
+    timestamp6,
+    timestamp7;
 
-      let fname = document.getElementById("Fname");
-      let lname = document.getElementById("Lname");
-      let age = document.getElementById("age");
-      let email = document.getElementById("sex");
-      let phone = document.getElementById("district");
+  let fname = document.getElementById("Fname");
+  let lname = document.getElementById("Lname");
+  let age = document.getElementById("age");
+  let email = document.getElementById("sex");
+  let phone = document.getElementById("district");
 
-      let add = document.getElementById("AddBtn");
-      let reset = document.getElementById("ResetBtn");
+  let add = document.getElementById("AddBtn");
+  let reset = document.getElementById("ResetBtn");
 
-      function AddData() {
-        if (
-          fname.value.trim() === "" ||
-          lname.value.trim() === "" ||
-          age.value.trim() === ""
-        ) {
-          alert("Please fill in all required fields.");
-          return;
-        }
+  function AddData() {
+    if (
+      fname.value.trim() === "" ||
+      lname.value.trim() === "" ||
+      age.value.trim() === ""
+    ) {
+      alert("Please fill in all required fields.");
+      return;
+    }
 
-        const PlayerListRef = ref(database, "players");
-        const newPlayerRef = push(PlayerListRef);
+    const PlayerListRef = ref(database, "players");
+    const newPlayerRef = push(PlayerListRef);
 
-        set(newPlayerRef, {
-          NameOfPlayer: { firstname: Fname.value, lastname: Lname.value },
-          age: age.value,
-          sex: sex.value,
-          district: district.value,
-        });
+    set(newPlayerRef, {
+      NameOfPlayer: { firstname: Fname.value, lastname: Lname.value },
+      age: age.value,
+      sex: sex.value,
+      district: district.value,
+    });
 
-        resetFormField();
+    resetFormField();
+  }
+
+  function resetFormField() {
+    document.getElementById("Form1").reset();
+  }
+
+  AddBtn.addEventListener("click", AddData);
+  ResetBtn.addEventListener("click", resetFormField);
+
+  // Listen for changes in the timestamp value
+  onValue(timestampRef, (snapshot) => {
+    timestamp1 = snapshot.val().unit1;
+    timestamp2 = snapshot.val().unit2;
+    timestamp3 = snapshot.val().unit3;
+    timestamp4 = snapshot.val().unit4;
+    timestamp5 = snapshot.val().unit5;
+    timestamp6 = snapshot.val().unit6;
+    timestamp7 = snapshot.val().unit7;
+
+    if (timestamp1 && timestamp7) {
+      // Convert timestamps to milliseconds and ensure they are valid dates
+      const timestampNew1 = new Date(parseInt(timestamp1, 10));
+      const timestampNew7 = new Date(parseInt(timestamp2, 10));
+
+      if (!isNaN(timestamp1) && !isNaN(timestamp7)) {
+        // Calculate the time difference in seconds
+        const timeDifferenceInSeconds =
+          (timestampNew7 - timestampNew1) / 1000;
+
+        // Display the time difference as a number in seconds
+        document.getElementById("time-difference-1-7").innerHTML = timeDifferenceInSeconds + " s";
+      } else {
+        document.getElementById("time-difference-1-7").innerHTML =
+          "Invalid timestamps";
       }
+    } else {
+      document.getElementById("time-difference-1-7").innerHTML =
+        "Missing timestamps";
+    }
 
-      function resetFormField() {
-        document.getElementById("Form1").reset();
+    //  ......................
+
+    if (timestamp2 && timestamp7) {
+      // Convert timestamps to milliseconds and ensure they are valid dates
+      const timestampNew2 = new Date(parseInt(timestamp2, 10));
+      const timestampNew7 = new Date(parseInt(timestamp7, 10));
+
+      if (!isNaN(timestamp2) && !isNaN(timestamp7)) {
+        // Calculate the time difference in seconds
+        const timeDifferenceInSeconds =
+          (timestampNew7 - timestampNew2) / 1000;
+
+        // Display the time difference as a number in seconds
+        document.getElementById("time-difference-7-2").innerHTML =
+          timeDifferenceInSeconds + " s";
+      } else {
+        document.getElementById("time-difference-7-2").innerHTML =
+          "Invalid timestamps";
       }
+    } else {
+      document.getElementById("time-difference-7-2").innerHTML =
+        "Missing timestamps";
+    }
 
-      AddBtn.addEventListener("click", AddData);
-      ResetBtn.addEventListener("click", resetFormField);
+    // ....................
 
-      // Listen for changes in the timestamp value
-      onValue(timestampRef, (snapshot) => {
-        timestamp1 = snapshot.val().unit1;
-        timestamp2 = snapshot.val().unit2;
-        timestamp3 = snapshot.val().unit3;
-        timestamp4 = snapshot.val().unit4;
-        timestamp5 = snapshot.val().unit5;
-        timestamp6 = snapshot.val().unit6;
-        timestamp7 = snapshot.val().unit7;
+    if (timestamp3 && timestamp7) {
+      // Convert timestamps to milliseconds and ensure they are valid dates
+      const timestampNew3 = new Date(parseInt(timestamp3, 10));
+      const timestampNew7 = new Date(parseInt(timestamp7, 10));
 
-        if (timestamp1 && timestamp7) {
-          // Convert timestamps to milliseconds and ensure they are valid dates
-          const timestampNew1 = new Date(parseInt(timestamp1, 10));
-          const timestampNew7 = new Date(parseInt(timestamp2, 10));
+      if (!isNaN(timestamp3) && !isNaN(timestamp7)) {
+        // Calculate the time difference in seconds
+        const timeDifferenceInSeconds =
+          (timestampNew7 - timestampNew3) / 1000;
 
-          if (!isNaN(timestamp1) && !isNaN(timestamp7)) {
-            // Calculate the time difference in seconds
-            const timeDifferenceInSeconds =
-              (timestampNew7 - timestampNew1) / 1000;
+        // Display the time difference as a number in seconds
+        document.getElementById("time-difference-7-3").innerHTML =
+          timeDifferenceInSeconds + " s";
+      } else {
+        document.getElementById("time-difference-7-3").innerHTML =
+          "Invalid timestamps";
+      }
+    } else {
+      document.getElementById("time-difference-7-3").innerHTML =
+        "Missing timestamps";
+    }
 
-            // Display the time difference as a number in seconds
-            document.getElementById("time-difference-1-7").innerHTML =
-              "Time Difference: " + timeDifferenceInSeconds + " seconds";
-          } else {
-            document.getElementById("time-difference-1-7").innerHTML =
-              "Invalid timestamps";
-          }
-        } else {
-          document.getElementById("time-difference-1-7").innerHTML =
-            "Missing timestamps";
-        }
+    // ..........................
 
-        //  ......................
+    if (timestamp4 && timestamp7) {
+      // Convert timestamps to milliseconds and ensure they are valid dates
+      const timestampNew4 = new Date(parseInt(timestamp4, 10));
+      const timestampNew7 = new Date(parseInt(timestamp7, 10));
 
-        if (timestamp2 && timestamp7) {
-          // Convert timestamps to milliseconds and ensure they are valid dates
-          const timestampNew2 = new Date(parseInt(timestamp2, 10));
-          const timestampNew7 = new Date(parseInt(timestamp7, 10));
+      if (!isNaN(timestamp4) && !isNaN(timestamp7)) {
+        // Calculate the time difference in seconds
+        const timeDifferenceInSeconds =
+          (timestampNew7 - timestampNew4) / 1000;
 
-          if (!isNaN(timestamp2) && !isNaN(timestamp7)) {
-            // Calculate the time difference in seconds
-            const timeDifferenceInSeconds =
-              (timestampNew7 - timestampNew2) / 1000;
+        // Display the time difference as a number in seconds
+        document.getElementById("time-difference-7-4").innerHTML =
+          timeDifferenceInSeconds + " s";
+      } else {
+        document.getElementById("time-difference-7-4").innerHTML =
+          "Invalid timestamps";
+      }
+    } else {
+      document.getElementById("time-difference-7-4").innerHTML =
+        "Missing timestamps";
+    }
 
-            // Display the time difference as a number in seconds
-            document.getElementById("time-difference-7-2").innerHTML =
-              "Time Difference: " + timeDifferenceInSeconds + " seconds";
-          } else {
-            document.getElementById("time-difference-7-2").innerHTML =
-              "Invalid timestamps";
-          }
-        } else {
-          document.getElementById("time-difference-7-2").innerHTML =
-            "Missing timestamps";
-        }
+    //  ......................
 
-        // ....................
+    if (timestamp5 && timestamp7) {
+      // Convert timestamps to milliseconds and ensure they are valid dates
+      const timestampNew5 = new Date(parseInt(timestamp5, 10));
+      const timestampNew7 = new Date(parseInt(timestamp7, 10));
 
-        if (timestamp3 && timestamp7) {
-          // Convert timestamps to milliseconds and ensure they are valid dates
-          const timestampNew3 = new Date(parseInt(timestamp3, 10));
-          const timestampNew7 = new Date(parseInt(timestamp7, 10));
+      if (!isNaN(timestamp5) && !isNaN(timestamp7)) {
+        // Calculate the time difference in seconds
+        const timeDifferenceInSeconds =
+          (timestampNew7 - timestampNew5) / 1000;
 
-          if (!isNaN(timestamp3) && !isNaN(timestamp7)) {
-            // Calculate the time difference in seconds
-            const timeDifferenceInSeconds =
-              (timestampNew7 - timestampNew3) / 1000;
+        // Display the time difference as a number in seconds
+        document.getElementById("time-difference-7-5").innerHTML =
+          timeDifferenceInSeconds + " s";
+      } else {
+        document.getElementById("time-difference-7-5").innerHTML =
+          "Invalid timestamps";
+      }
+    } else {
+      document.getElementById("time-difference-7-5").innerHTML =
+        "Missing timestamps";
+    }
 
-            // Display the time difference as a number in seconds
-            document.getElementById("time-difference-7-3").innerHTML =
-              "Time Difference: " + timeDifferenceInSeconds + " seconds";
-          } else {
-            document.getElementById("time-difference-7-3").innerHTML =
-              "Invalid timestamps";
-          }
-        } else {
-          document.getElementById("time-difference-7-3").innerHTML =
-            "Missing timestamps";
-        }
+    //  ......................
 
-        // ..........................
+    if (timestamp6 && timestamp7) {
+      // Convert timestamps to milliseconds and ensure they are valid dates
+      const timestampNew6 = new Date(parseInt(timestamp6, 10));
+      const timestampNew7 = new Date(parseInt(timestamp7, 10));
 
-        if (timestamp4 && timestamp7) {
-          // Convert timestamps to milliseconds and ensure they are valid dates
-          const timestampNew4 = new Date(parseInt(timestamp4, 10));
-          const timestampNew7 = new Date(parseInt(timestamp7, 10));
+      if (!isNaN(timestamp6) && !isNaN(timestamp7)) {
+        // Calculate the time difference in seconds
+        const timeDifferenceInSeconds =
+          (timestampNew7 - timestampNew6) / 1000;
 
-          if (!isNaN(timestamp4) && !isNaN(timestamp7)) {
-            // Calculate the time difference in seconds
-            const timeDifferenceInSeconds =
-              (timestampNew7 - timestampNew4) / 1000;
-
-            // Display the time difference as a number in seconds
-            document.getElementById("time-difference-7-4").innerHTML =
-              "Time Difference: " + timeDifferenceInSeconds + " seconds";
-          } else {
-            document.getElementById("time-difference-7-4").innerHTML =
-              "Invalid timestamps";
-          }
-        } else {
-          document.getElementById("time-difference-7-4").innerHTML =
-            "Missing timestamps";
-        }
-
-        //  ......................
-
-        if (timestamp5 && timestamp7) {
-          // Convert timestamps to milliseconds and ensure they are valid dates
-          const timestampNew5 = new Date(parseInt(timestamp5, 10));
-          const timestampNew7 = new Date(parseInt(timestamp7, 10));
-
-          if (!isNaN(timestamp5) && !isNaN(timestamp7)) {
-            // Calculate the time difference in seconds
-            const timeDifferenceInSeconds =
-              (timestampNew7 - timestampNew5) / 1000;
-
-            // Display the time difference as a number in seconds
-            document.getElementById("time-difference-7-5").innerHTML =
-              "Time Difference: " + timeDifferenceInSeconds + " seconds";
-          } else {
-            document.getElementById("time-difference-7-5").innerHTML =
-              "Invalid timestamps";
-          }
-        } else {
-          document.getElementById("time-difference-7-5").innerHTML =
-            "Missing timestamps";
-        }
-
-        //  ......................
-
-        if (timestamp6 && timestamp7) {
-          // Convert timestamps to milliseconds and ensure they are valid dates
-          const timestampNew6 = new Date(parseInt(timestamp6, 10));
-          const timestampNew7 = new Date(parseInt(timestamp7, 10));
-
-          if (!isNaN(timestamp6) && !isNaN(timestamp7)) {
-            // Calculate the time difference in seconds
-            const timeDifferenceInSeconds =
-              (timestampNew7 - timestampNew6) / 1000;
-
-            // Display the time difference as a number in seconds
-            document.getElementById("time-difference-7-6").innerHTML =
-              "Time Difference: " + timeDifferenceInSeconds + " seconds";
-          } else {
-            document.getElementById("time-difference-7-6").innerHTML =
-              "Invalid timestamps";
-          }
-        } else {
-          document.getElementById("time-difference-7-6").innerHTML =
-            "Missing timestamps";
-        }
-      });
+        // Display the time difference as a number in seconds
+        document.getElementById("time-difference-7-6").innerHTML =
+          timeDifferenceInSeconds + " s";
+      } else {
+        document.getElementById("time-difference-7-6").innerHTML =
+          "Invalid timestamps";
+      }
+    } else {
+      document.getElementById("time-difference-7-6").innerHTML =
+        "Missing timestamps";
+    }
+  });
     </script>
   </body>
 </html>
