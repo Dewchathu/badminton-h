@@ -188,12 +188,12 @@
         if (timestamp1 && timestamp7) {
           // Convert timestamps to milliseconds and ensure they are valid dates
           const timestampNew1 = new Date(parseInt(timestamp1, 10));
-          const timestampNew7 = new Date(parseInt(timestamp7, 10));
+          const timestampNew71 = new Date(parseInt(timestamp7, 10));
 
           if (!isNaN(timestamp1) && !isNaN(timestamp7)) {
             // Check if timestampNew1 is less than timestampNew7
-            timeDifference_C1 = Math.abs((timestampNew1 - timestampNew7) / 1000);
-console.log(timeDifference_C1);
+            timeDifference_C1 = Math.abs((timestampNew1 - timestampNew71));
+            console.log(timeDifference_C1);
 
 // Display the time difference as a number in seconds
 document.getElementById("time-difference-1-7").innerHTML =
