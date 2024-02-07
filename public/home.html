@@ -185,29 +185,32 @@
         timestamp6 = snapshot.val().unit6;
         timestamp7 = snapshot.val().unit7;
 
-        if (timestamp1 && timestamp7) {
-          // Convert timestamps to milliseconds and ensure they are valid dates
-          const timestampNew1 = new Date(parseInt(timestamp1, 10));
-          const timestampNew71 = new Date(parseInt(timestamp7, 10));
+        
+        let calculationDone = false; // Flag variable to track if calculation has been done
 
-          if (!isNaN(timestamp1) && !isNaN(timestamp7)) {
-            // Check if timestampNew1 is less than timestampNew7
-            timeDifference_C1 = Math.abs((timestampNew1 - timestampNew71));
-            console.log(timeDifference_C1);
+if (timestamp1 && timestamp7 && !calculationDone) {
+  // Convert timestamps to milliseconds and ensure they are valid dates
+  const timestampNew1 = new Date(parseInt(timestamp1, 10));
+  const timestampNew71 = new Date(parseInt(timestamp7, 10));
 
-// Display the time difference as a number in seconds
-document.getElementById("time-difference-1-7").innerHTML =
-  timeDifference_C1 + " s";
+  if (!isNaN(timestamp1) && !isNaN(timestamp7)) {
+    // Check if timestampNew1 is less than timestampNew7
+    timeDifference_C1 = Math.abs(timestampNew1 - timestampNew71);
+    console.log(timeDifference_C1);
 
-           
-          } else {
-            document.getElementById("time-difference-1-7").innerHTML =
-              "Invalid timestamps";
-          }
-        } else {
-          document.getElementById("time-difference-1-7").innerHTML =
-            "Missing timestamps";
-        }
+    // Display the time difference as a number in seconds
+    document.getElementById("time-difference-1-7").innerHTML =
+      timeDifference_C1 + " s";
+
+    calculationDone = true; // Set flag to true to indicate calculation is done
+  } else {
+    document.getElementById("time-difference-1-7").innerHTML =
+      "Invalid timestamps";
+  }
+} else if (!calculationDone) {
+  document.getElementById("time-difference-1-7").innerHTML =
+    "Missing timestamps";
+}
 
         // ..................
 
