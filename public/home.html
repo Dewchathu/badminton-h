@@ -214,17 +214,17 @@ document.getElementById("time-difference-1-7").innerHTML =
         if (timestamp1 && timestamp7) {
           // Convert timestamps to milliseconds and ensure they are valid dates
           const timestampNew1 = new Date(parseInt(timestamp1, 10));
-          const timestampNew7 = new Date(parseInt(timestamp7, 10));
+          const timestampNew72 = new Date(parseInt(timestamp7, 10));
 
           if (!isNaN(timestamp1) && !isNaN(timestamp7)) {
             // Check if timestampNew7 is less than timestampNew1
-            if (timestampNew7 < timestampNew1) {
+            if (timestampNew72 < timestampNew1) {
               document.getElementById("time-difference-7-1").innerHTML =
                 "not touched";
             } else {
               // Calculate the time difference in seconds
               timeDifference_1C =
-                (timestampNew7 - timestampNew1);
+                (timestampNew72 - timestampNew1);
                 console.log(timeDifference_1C);
 
               // Display the time difference as a number in seconds
