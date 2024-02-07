@@ -192,18 +192,15 @@
 
           if (!isNaN(timestamp1) && !isNaN(timestamp7)) {
             // Check if timestampNew1 is less than timestampNew7
-            if (timestampNew1 < timestampNew7) {
-              document.getElementById("time-difference-1-7").innerHTML =
-                "not touched";
-            } else {
-              // Calculate the time difference in seconds
-              timeDifference_C1 = (timestampNew1 - timestampNew7) / 1000;
-              console.log(timeDifference_C1);
+            // Calculate the time difference in seconds
+            timeDifference_C1 = Math.abs((timestampNew1 - timestampNew7) / 1000);
+console.log(timeDifference_C1);
 
-              // Display the time difference as a number in seconds
-              document.getElementById("time-difference-1-7").innerHTML =
-                timeDifference_C1 + " s";
-            }
+// Display the time difference as a number in seconds
+document.getElementById("time-difference-1-7").innerHTML =
+  timeDifference_C1 + " s";
+
+           
           } else {
             document.getElementById("time-difference-1-7").innerHTML =
               "Invalid timestamps";
