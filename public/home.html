@@ -185,7 +185,7 @@
         timestamp6 = snapshot.val().unit6;
         timestamp7 = snapshot.val().unit7;
 
-        
+
         let calculationDone = false; // Flag variable to track if calculation has been done
 
 if (timestamp1 && timestamp7 && !calculationDone) {
@@ -212,36 +212,35 @@ if (timestamp1 && timestamp7 && !calculationDone) {
     "Missing timestamps";
 }
 
-        // ..................
+// Second part of the code
+if (timestamp1 && timestamp7 && !calculationDone) {
+  // Convert timestamps to milliseconds and ensure they are valid dates
+  const timestampNew1 = new Date(parseInt(timestamp1, 10));
+  const timestampNew72 = new Date(parseInt(timestamp7, 10));
 
-        if (timestamp1 && timestamp7) {
-          // Convert timestamps to milliseconds and ensure they are valid dates
-          const timestampNew1 = new Date(parseInt(timestamp1, 10));
-          const timestampNew72 = new Date(parseInt(timestamp7, 10));
+  if (!isNaN(timestamp1) && !isNaN(timestamp7)) {
+    // Check if timestampNew7 is less than timestampNew1
+    if (timestampNew72 < timestampNew1) {
+      document.getElementById("time-difference-7-1").innerHTML =
+        "not touched";
+    } else {
+      // Calculate the time difference in seconds
+      timeDifference_1C = timestampNew72 - timestampNew1;
+      console.log(timeDifference_1C);
 
-          if (!isNaN(timestamp1) && !isNaN(timestamp7)) {
-            // Check if timestampNew7 is less than timestampNew1
-            if (timestampNew72 < timestampNew1) {
-              document.getElementById("time-difference-7-1").innerHTML =
-                "not touched";
-            } else {
-              // Calculate the time difference in seconds
-              timeDifference_1C =
-                (timestampNew72 - timestampNew1);
-                console.log(timeDifference_1C);
+      // Display the time difference as a number in seconds
+      document.getElementById("time-difference-7-1").innerHTML =
+        timeDifference_1C + " s";
+    }
+  } else {
+    document.getElementById("time-difference-7-1").innerHTML =
+      "Invalid timestamps";
+  }
+} else if (!calculationDone) {
+  document.getElementById("time-difference-7-1").innerHTML =
+    "Missing timestamps";
+}
 
-              // Display the time difference as a number in seconds
-              document.getElementById("time-difference-7-1").innerHTML =
-                timeDifference_1C + " s";
-            }
-          } else {
-            document.getElementById("time-difference-7-1").innerHTML =
-              "Invalid timestamps";
-          }
-        } else {
-          document.getElementById("time-difference-7-1").innerHTML =
-            "Missing timestamps";
-        }
 
         //  ......................
 
