@@ -200,49 +200,66 @@
 
         
 
-        if (timestamp1 && timestamp7 && !calculationDone_C1) {
-          const timestampNew1 = new Date(parseInt(timestamp1, 10));
-          const timestampNew71 = new Date(parseInt(timestamp7, 10));
+        function calculateTimeDifferencec1() {
+  if (timestamp1 && timestamp7 && !calculationDone_C1) {
+    const timestampNew1 = new Date(parseInt(timestamp1, 10));
+    const timestampNew71 = new Date(parseInt(timestamp7, 10));
 
-          if (!isNaN(timestamp1) && !isNaN(timestamp7)) {
-            timeDifference_C1 = Math.abs(timestampNew1 - timestampNew71);
-            document.getElementById("time-difference-1-7").innerHTML =
-              timeDifference_C1 + " s";
-            calculationDone_C1 = true;
-            calculationDone_1C = false;
-          } else {
-            document.getElementById("time-difference-1-7").innerHTML =
-              "Invalid timestamps";
-          }
-        } else if (!calculationDone_C1) {
-          document.getElementById("time-difference-1-7").innerHTML =
-            "Missing timestamps";
-        }
+    if (!isNaN(timestamp1) && !isNaN(timestamp7)) {
+      timeDifference_C1 = Math.abs(timestampNew1 - timestampNew71);
+      document.getElementById("time-difference-1-7").innerHTML =
+        timeDifference_C1 + " s";
+      calculationDone_C1 = true;
+      calculationDone_1C = false;
+    } else {
+      document.getElementById("time-difference-1-7").innerHTML =
+        "Invalid timestamps";
+      return; // Stop further execution
+    }
+  } else if (!calculationDone_C1) {
+    document.getElementById("time-difference-1-7").innerHTML =
+      "Missing timestamps";
+    return; // Stop further execution
+  }
+}
 
-        // Second part of the code
-        if (timestamp1 && timestamp7 && !calculationDone_1C) {
-          const timestampNew1 = new Date(parseInt(timestamp1, 10));
-          const timestampNew72 = new Date(parseInt(timestamp7, 10));
+calculateTimeDifferencec1(); // Call the function
 
-          if (!isNaN(timestamp1) && !isNaN(timestamp7)) {
-            if (timestampNew72 < timestampNew1) {
-              document.getElementById("time-difference-7-1").innerHTML =
-                "not touched";
-            } else {
-              timeDifference_1C = timestampNew72 - timestampNew1;
-              document.getElementById("time-difference-7-1").innerHTML =
-                timeDifference_1C + " s";
-              calculationDone_1C = true;
-              calculationDone_C2 = false;
-            }
-          } else {
-            document.getElementById("time-difference-7-1").innerHTML =
-              "Invalid timestamps";
-          }
-        } else if (!calculationDone_1C) {
-          document.getElementById("time-difference-7-1").innerHTML =
-            "Missing timestamps";
-        }
+// Stop further execution
+return;
+
+
+function calculateTimeDifference1c() {
+  if (timestamp1 && timestamp7 && !calculationDone_1C) {
+    const timestampNew1 = new Date(parseInt(timestamp1, 10));
+    const timestampNew72 = new Date(parseInt(timestamp7, 10));
+
+    if (!isNaN(timestamp1) && !isNaN(timestamp7)) {
+      if (timestampNew72 < timestampNew1) {
+        document.getElementById("time-difference-7-1").innerHTML =
+          "not touched";
+      } else {
+        timeDifference_1C = timestampNew72 - timestampNew1;
+        document.getElementById("time-difference-7-1").innerHTML =
+          timeDifference_1C + " s";
+        calculationDone_1C = true;
+        calculationDone_C2 = false;
+      }
+    } else {
+      document.getElementById("time-difference-7-1").innerHTML =
+        "Invalid timestamps";
+    }
+  } else if (!calculationDone_1C) {
+    document.getElementById("time-difference-7-1").innerHTML =
+      "Missing timestamps";
+  }
+}
+
+calculateTimeDifference1c(); // Call the function
+
+// Stop further execution
+return;
+
 
         //  ......................
 
