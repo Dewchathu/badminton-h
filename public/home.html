@@ -22,7 +22,7 @@
     <div class="row">
       <div class="col-3">
         <div class="box1 left">
-          <form action="" id="myform">
+          <form id="myform">
             <div class="form1">
               <h2>Details</h2>
               <form2>
@@ -76,7 +76,6 @@
                     <option value="kegalle">Kegalle</option>
                   </select>
                 </div>
-
                 <div class="btn">
                   <input
                     type="submit"
@@ -92,6 +91,7 @@
                     id="ResetBtn"
                   />
                 </div>
+
                 <div class="addbtn">
                   <input type="submit" value="Add" class="add" id="AddBtn" />
                 </div>
@@ -166,6 +166,20 @@
         timeDifference_C6,
         timeDifference_6C;
 
+
+        let calculationDone_C1 = true;
+        let calculationDone_1C = true;
+        let calculationDone_C2 = true;
+        let calculationDone_2C = true;
+        let calculationDone_C3 = true;
+        let calculationDone_3C = true;
+        let calculationDone_C4 = true;
+        let calculationDone_4C = true;
+        let calculationDone_C5 = true;
+        let calculationDone_5C = true;
+        let calculationDone_C6 = true;
+        let calculationDone_6C = true;
+
       let fname = document.getElementById("Fname");
       let lname = document.getElementById("Lname");
       let age = document.getElementById("age");
@@ -173,7 +187,6 @@
       let phone = document.getElementById("district");
 
       let add = document.getElementById("AddBtn");
-      let reset = document.getElementById("ResetBtn");
 
       // Listen for changes in the timestamp value
       onValue(timestampRef, (snapshot) => {
@@ -185,66 +198,55 @@
         timestamp6 = snapshot.val().unit6;
         timestamp7 = snapshot.val().unit7;
 
+        
 
-        let calculationDone = false; // Flag variable to track if calculation has been done
+        if (timestamp1 && timestamp7 && !calculationDone_C1) {
+          const timestampNew1 = new Date(parseInt(timestamp1, 10));
+          const timestampNew71 = new Date(parseInt(timestamp7, 10));
 
-if (timestamp1 && timestamp7 && !calculationDone) {
-  // Convert timestamps to milliseconds and ensure they are valid dates
-  const timestampNew1 = new Date(parseInt(timestamp1, 10));
-  const timestampNew71 = new Date(parseInt(timestamp7, 10));
+          if (!isNaN(timestamp1) && !isNaN(timestamp7)) {
+            timeDifference_C1 = Math.abs(timestampNew1 - timestampNew71);
+            document.getElementById("time-difference-1-7").innerHTML =
+              timeDifference_C1 + " s";
+            calculationDone_C1 = true;
+            calculationDone_1C = false;
+          } else {
+            document.getElementById("time-difference-1-7").innerHTML =
+              "Invalid timestamps";
+          }
+        } else if (!calculationDone_C1) {
+          document.getElementById("time-difference-1-7").innerHTML =
+            "Missing timestamps";
+        }
 
-  if (!isNaN(timestamp1) && !isNaN(timestamp7)) {
-    // Check if timestampNew1 is less than timestampNew7
-    timeDifference_C1 = Math.abs(timestampNew1 - timestampNew71);
-    console.log(timeDifference_C1);
+        // Second part of the code
+        if (timestamp1 && timestamp7 && !calculationDone_1C) {
+          const timestampNew1 = new Date(parseInt(timestamp1, 10));
+          const timestampNew72 = new Date(parseInt(timestamp7, 10));
 
-    // Display the time difference as a number in seconds
-    document.getElementById("time-difference-1-7").innerHTML =
-      timeDifference_C1 + " s";
-
-    calculationDone = true; // Set flag to true to indicate calculation is done
-  } else {
-    document.getElementById("time-difference-1-7").innerHTML =
-      "Invalid timestamps";
-  }
-} else if (!calculationDone) {
-  document.getElementById("time-difference-1-7").innerHTML =
-    "Missing timestamps";
-}
-
-// Second part of the code
-if (timestamp1 && timestamp7 && !calculationDone) {
-  // Convert timestamps to milliseconds and ensure they are valid dates
-  const timestampNew1 = new Date(parseInt(timestamp1, 10));
-  const timestampNew72 = new Date(parseInt(timestamp7, 10));
-
-  if (!isNaN(timestamp1) && !isNaN(timestamp7)) {
-    // Check if timestampNew7 is less than timestampNew1
-    if (timestampNew72 < timestampNew1) {
-      document.getElementById("time-difference-7-1").innerHTML =
-        "not touched";
-    } else {
-      // Calculate the time difference in seconds
-      timeDifference_1C = timestampNew72 - timestampNew1;
-      console.log(timeDifference_1C);
-
-      // Display the time difference as a number in seconds
-      document.getElementById("time-difference-7-1").innerHTML =
-        timeDifference_1C + " s";
-    }
-  } else {
-    document.getElementById("time-difference-7-1").innerHTML =
-      "Invalid timestamps";
-  }
-} else if (!calculationDone) {
-  document.getElementById("time-difference-7-1").innerHTML =
-    "Missing timestamps";
-}
-
+          if (!isNaN(timestamp1) && !isNaN(timestamp7)) {
+            if (timestampNew72 < timestampNew1) {
+              document.getElementById("time-difference-7-1").innerHTML =
+                "not touched";
+            } else {
+              timeDifference_1C = timestampNew72 - timestampNew1;
+              document.getElementById("time-difference-7-1").innerHTML =
+                timeDifference_1C + " s";
+              calculationDone_1C = true;
+              calculationDone_C2 = false;
+            }
+          } else {
+            document.getElementById("time-difference-7-1").innerHTML =
+              "Invalid timestamps";
+          }
+        } else if (!calculationDone_1C) {
+          document.getElementById("time-difference-7-1").innerHTML =
+            "Missing timestamps";
+        }
 
         //  ......................
 
-        if (timestamp2 && timestamp7) {
+        if (timestamp2 && timestamp7 && !calculationDone_2C) {
           // Convert timestamps to milliseconds and ensure they are valid dates
           const timestampNew2 = new Date(parseInt(timestamp2, 10));
           const timestampNew7 = new Date(parseInt(timestamp7, 10));
@@ -256,24 +258,25 @@ if (timestamp1 && timestamp7 && !calculationDone) {
                 "not touched";
             } else {
               // Calculate the time difference in seconds
-              timeDifference_2C =
-                (timestampNew2 - timestampNew7);
+              timeDifference_2C = timestampNew2 - timestampNew7;
 
               // Display the time difference as a number in seconds
               document.getElementById("time-difference-2-7").innerHTML =
                 timeDifference_2C + " s";
+                calculationDone_2C = true;
+                calculationDone_C3 = false;
             }
           } else {
             document.getElementById("time-difference-2-7").innerHTML =
               "Invalid timestamps";
           }
-        } else {
+        } else if (!calculationDone_2C1) {
           document.getElementById("time-difference-2-7").innerHTML =
             "Missing timestamps";
         }
 
         // ......................
-        if (timestamp2 && timestamp7) {
+        if (timestamp2 && timestamp7 && !calculationDone_C2) {
           // Convert timestamps to milliseconds and ensure they are valid dates
           const timestampNew2 = new Date(parseInt(timestamp2, 10));
           const timestampNew7 = new Date(parseInt(timestamp7, 10));
@@ -285,25 +288,26 @@ if (timestamp1 && timestamp7 && !calculationDone) {
                 "not touched";
             } else {
               // Calculate the time difference in seconds
-              timeDifference_C2 =
-                (timestampNew7 - timestampNew2);
+              timeDifference_C2 = timestampNew7 - timestampNew2;
 
               // Display the time difference as a number in seconds
               document.getElementById("time-difference-7-2").innerHTML =
                 timeDifference_C2 + " s";
+                calculationDone_C2 = true;
+                calculationDone_2C = false;
             }
           } else {
             document.getElementById("time-difference-7-2").innerHTML =
               "Invalid timestamps";
           }
-        } else {
+        } else if (!calculationDone_C2) {
           document.getElementById("time-difference-7-2").innerHTML =
             "Missing timestamps";
         }
 
         // ....................
 
-        if (timestamp3 && timestamp7) {
+        if (timestamp3 && timestamp7 && !calculationDone_3C) {
           // Convert timestamps to milliseconds and ensure they are valid dates
           const timestampNew3 = new Date(parseInt(timestamp3, 10));
           const timestampNew7 = new Date(parseInt(timestamp7, 10));
@@ -315,25 +319,26 @@ if (timestamp1 && timestamp7 && !calculationDone) {
                 "not touched";
             } else {
               // Calculate the time difference in seconds
-              timeDifference_3C =
-                (timestampNew3 - timestampNew7);
+              timeDifference_3C = timestampNew3 - timestampNew7;
 
               // Display the time difference as a number in seconds
               document.getElementById("time-difference-3-7").innerHTML =
-                timeDifference_C3 + " s";
+                timeDifference_3C + " s";
+                calculationDone_3C = true;
+                calculationDone_C3 = false;
             }
           } else {
             document.getElementById("time-difference-3-7").innerHTML =
               "Invalid timestamps";
           }
-        } else {
+        } else if (!calculationDone_3C) {
           document.getElementById("time-difference-3-7").innerHTML =
             "Missing timestamps";
         }
 
         // ..........................
 
-        if (timestamp3 && timestamp7) {
+        if (timestamp3 && timestamp7 && !calculationDone_C3) {
           // Convert timestamps to milliseconds and ensure they are valid dates
           const timestampNew3 = new Date(parseInt(timestamp3, 10));
           const timestampNew7 = new Date(parseInt(timestamp7, 10));
@@ -345,25 +350,26 @@ if (timestamp1 && timestamp7 && !calculationDone) {
                 "not touched";
             } else {
               // Calculate the time difference in seconds
-              timeDifference_C3 =
-                (timestampNew7 - timestampNew3);
+              timeDifference_C3 = timestampNew7 - timestampNew3;
 
               // Display the time difference as a number in seconds
               document.getElementById("time-difference-7-3").innerHTML =
                 timeDifference_C3 + " s";
+                calculationDone_C3 = true;
+                calculationDone_4C = false;
             }
           } else {
             document.getElementById("time-difference-7-3").innerHTML =
               "Invalid timestamps";
           }
-        } else {
+        } else if (!calculationDone_C3) {
           document.getElementById("time-difference-7-3").innerHTML =
             "Missing timestamps";
         }
 
         // .............................
 
-        if (timestamp4 && timestamp7) {
+        if (timestamp4 && timestamp7 && !calculationDone_4C) {
           // Convert timestamps to milliseconds and ensure they are valid dates
           const timestampNew4 = new Date(parseInt(timestamp4, 10));
           const timestampNew7 = new Date(parseInt(timestamp7, 10));
@@ -375,25 +381,26 @@ if (timestamp1 && timestamp7 && !calculationDone) {
                 "not touched";
             } else {
               // Calculate the time difference in seconds
-              timeDifference_4C =
-                (timestampNew4 - timestampNew7);
+              timeDifference_4C = timestampNew4 - timestampNew7;
 
               // Display the time difference as a number in seconds
               document.getElementById("time-difference-4-7").innerHTML =
                 timeDifference_4C + " s";
+                calculationDone_4C = true;
+                calculationDone_C4 = false;
             }
           } else {
             document.getElementById("time-difference-4-7").innerHTML =
               "Invalid timestamps";
           }
-        } else {
+        } else if (!calculationDone_4C) {
           document.getElementById("time-difference-4-7").innerHTML =
             "Missing timestamps";
         }
 
         // ...........................
 
-        if (timestamp4 && timestamp7) {
+        if (timestamp4 && timestamp7&& !calculationDone_C4) {
           // Convert timestamps to milliseconds and ensure they are valid dates
           const timestampNew4 = new Date(parseInt(timestamp4, 10));
           const timestampNew7 = new Date(parseInt(timestamp7, 10));
@@ -405,25 +412,26 @@ if (timestamp1 && timestamp7 && !calculationDone) {
                 "not touched";
             } else {
               // Calculate the time difference in seconds
-              timeDifference_C4 =
-                (timestampNew7 - timestampNew4);
+              timeDifference_C4 = timestampNew7 - timestampNew4;
 
               // Display the time difference as a number in seconds
               document.getElementById("time-difference-7-4").innerHTML =
                 timeDifference_C4 + " s";
+                calculationDone_C4 = true;
+                calculationDone_5C = false;
             }
           } else {
             document.getElementById("time-difference-7-4").innerHTML =
               "Invalid timestamps";
           }
-        } else {
+        } else if (!calculationDone_C4) {
           document.getElementById("time-difference-7-4").innerHTML =
             "Missing timestamps";
         }
 
         //  ......................
 
-        if (timestamp5 && timestamp7) {
+        if (timestamp5 && timestamp7&& !calculationDone_5C) {
           // Convert timestamps to milliseconds and ensure they are valid dates
           const timestampNew5 = new Date(parseInt(timestamp5, 10));
           const timestampNew7 = new Date(parseInt(timestamp7, 10));
@@ -435,25 +443,26 @@ if (timestamp1 && timestamp7 && !calculationDone) {
                 "not touched";
             } else {
               // Calculate the time difference in seconds
-              timeDifference_5C =
-                (timestampNew5 - timestampNew7);
+              timeDifference_5C = timestampNew5 - timestampNew7;
 
               // Display the time difference as a number in seconds
               document.getElementById("time-difference-5-7").innerHTML =
                 timeDifference_5C + " s";
+                calculationDone_5C = true;
+                calculationDone_C5 = false;
             }
           } else {
             document.getElementById("time-difference-5-7").innerHTML =
               "Invalid timestamps";
           }
-        } else {
+        } else if (!calculationDone_5C) {
           document.getElementById("time-difference-5-7").innerHTML =
             "Missing timestamps";
         }
 
         // ...........................
 
-        if (timestamp5 && timestamp7) {
+        if (timestamp5 && timestamp7&& !calculationDone_C5) {
           // Convert timestamps to milliseconds and ensure they are valid dates
           const timestampNew5 = new Date(parseInt(timestamp5, 10));
           const timestampNew7 = new Date(parseInt(timestamp7, 10));
@@ -465,25 +474,26 @@ if (timestamp1 && timestamp7 && !calculationDone) {
                 "not touched";
             } else {
               // Calculate the time difference in seconds
-              timeDifference_C5 =
-                (timestampNew7 - timestampNew5);
+              timeDifference_C5 = timestampNew7 - timestampNew5;
 
               // Display the time difference as a number in seconds
               document.getElementById("time-difference-7-5").innerHTML =
                 timeDifference_C5 + " s";
+                calculationDone_C5 = true;
+                calculationDone_6C = false;
             }
           } else {
             document.getElementById("time-difference-7-5").innerHTML =
               "Invalid timestamps";
           }
-        } else {
+        } else if (!calculationDone_C5) {
           document.getElementById("time-difference-7-5").innerHTML =
             "Missing timestamps";
         }
 
         //  ......................
 
-        if (timestamp6 && timestamp7) {
+        if (timestamp6 && timestamp7&& !calculationDone_6C) {
           // Convert timestamps to milliseconds and ensure they are valid dates
           const timestampNew6 = new Date(parseInt(timestamp6, 10));
           const timestampNew7 = new Date(parseInt(timestamp7, 10));
@@ -495,24 +505,25 @@ if (timestamp1 && timestamp7 && !calculationDone) {
                 "not touched";
             } else {
               // Calculate the time difference in seconds
-              timeDifference_6C =
-                (timestampNew6 - timestampNew7);
+              timeDifference_6C = timestampNew6 - timestampNew7;
 
               // Display the time difference as a number in seconds
               document.getElementById("time-difference-6-7").innerHTML =
                 timeDifference_6C + " s";
+                calculationDone_6C = true;
+                calculationDone_C6 = false;
             }
           } else {
             document.getElementById("time-difference-6-7").innerHTML =
               "Invalid timestamps";
           }
-        } else {
+        } else if (!calculationDone_6C){
           document.getElementById("time-difference-6-7").innerHTML =
             "Missing timestamps";
         }
 
         // .............................
-        if (timestamp6 && timestamp7) {
+        if (timestamp6 && timestamp7&& !calculationDone_C6) {
           // Convert timestamps to milliseconds and ensure they are valid dates
           const timestampNew6 = new Date(parseInt(timestamp6, 10));
           const timestampNew7 = new Date(parseInt(timestamp7, 10));
@@ -524,18 +535,18 @@ if (timestamp1 && timestamp7 && !calculationDone) {
                 "not touched";
             } else {
               // Calculate the time difference in seconds
-              timeDifference_C6 =
-                (timestampNew7 - timestampNew6);
+              timeDifference_C6 = timestampNew7 - timestampNew6;
 
               // Display the time difference as a number in seconds
               document.getElementById("time-difference-7-6").innerHTML =
-                timeDifferenceInSeconds + " s";
+                timeDifference_C6 + " s";
+                calculationDone_C2 = true;
             }
           } else {
             document.getElementById("time-difference-7-6").innerHTML =
               "Invalid timestamps";
           }
-        } else {
+        } else if (!calculationDone_C6){
           document.getElementById("time-difference-7-6").innerHTML =
             "Missing timestamps";
         }
@@ -582,11 +593,55 @@ if (timestamp1 && timestamp7 && !calculationDone) {
       }
 
       function resetFormField() {
-        document.getElementById("Form1").reset();
+        document.getElementById("myform").reset();
       }
 
       add.addEventListener("click", AddData);
-      reset.addEventListener("click", resetFormField);
+      //reset.addEventListener("click", resetFormField);
+
+      document
+        .getElementById("StartBtn")
+        .addEventListener("click", function () {
+          console.log("Start button pressed");
+          calculationDone_C1 = false;
+
+          document.getElementById("time-difference-7-1").innerHTML = "0";
+          document.getElementById("time-difference-1-7").innerHTML = "0";
+          document.getElementById("time-difference-7-2").innerHTML = "0";
+          document.getElementById("time-difference-2-7").innerHTML = "0";
+          document.getElementById("time-difference-7-3").innerHTML = "0";
+          document.getElementById("time-difference-3-7").innerHTML = "0";
+          document.getElementById("time-difference-7-4").innerHTML = "0";
+          document.getElementById("time-difference-4-7").innerHTML = "0";
+          document.getElementById("time-difference-7-5").innerHTML = "0";
+          document.getElementById("time-difference-5-7").innerHTML = "0";
+          document.getElementById("time-difference-7-6").innerHTML = "0";
+          document.getElementById("time-difference-6-7").innerHTML = "0";
+        });
+
+      // Function to handle the Stop button click
+      document.getElementById("StopBtn").addEventListener("click", function () {
+        console.log("Stop button pressed");
+        calculationDone_C1 = true;
+        calculationDone_1C = true;
+        calculationDone_C2 = true;
+        calculationDone_2C = true;
+        calculationDone_C3 = true;
+        calculationDone_3C = true;
+        calculationDone_C4 = true;
+        calculationDone_4C = true;
+        calculationDone_C5 = true;
+        calculationDone_5C = true;
+        calculationDone_C6 = true;
+        calculationDone_6C = true;
+      });
+
+      // Function to handle the Reset button click
+      document
+        .getElementById("ResetBtn")
+        .addEventListener("click", function () {
+          console.log("Reset button pressed");
+        });
     </script>
   </body>
 </html>

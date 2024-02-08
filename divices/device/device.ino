@@ -70,7 +70,7 @@ void loop() {
       unsigned long currentMillis = timeClient.getEpochTime();
       String timestamp = String(currentMillis);
 
-      String path = "ir_test/unit7";
+      String path = "ir_test/unit3";
       if (Firebase.RTDB.setString(&fbdo, path.c_str(), timestamp.c_str())) {
         Serial.println("PASSED");
         Serial.println("PATH: " + fbdo.dataPath());
